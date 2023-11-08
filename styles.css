@@ -10,10 +10,10 @@
 }
 
 /* Container styles */
- body{
+body {
     display: grid;
-    justify-content: stretch;
-    grid-template-rows: 1fr 70% 1fr;
+    grid-template-rows: 1fr 100fr 1fr;
+    /* 100fr take up as much space as possible */
     grid-template-areas:
         "header"
         "main"
@@ -32,6 +32,7 @@ main {
 footer {
     grid-area: footer;
     width: 50%;
+    align-items: end;
     margin: auto;
     padding: 2vh;
     color: white;
@@ -39,83 +40,67 @@ footer {
 }
 
 /* First page styles */
- img {
+img {
     max-width: 100%;
     height: auto;
     border: 1px solid white;
 }
 
- button {
+button {
     margin: 2%;
-    padding: 1vh 5%;
+    padding: 1vh;
     border: none;
     border-radius: 10px;
     background-color: rgb(0, 79, 110);
 }
 
- button:hover {
+button:hover {
     background-color: rgb(0, 79, 110);
     box-shadow: 0 0 10px rgb(6, 52, 70);
     transition: 0.5s;
 }
 
- a {
-    display: inline-block;
-    z-index: 1;
-    padding: 0 2em;
-    margin: 0 -2em;
-    position: relative;
+a {
     color: white;
     font-weight: bold;
     text-decoration: none;
 }
 
-
 /* Page 1 and 2 styles */
- .game-grid {
+.game-grid {
     display: grid;
     grid-template-columns: repeat(6, auto);
     grid-template-rows: repeat(5, auto);
-    justify-content: center;
+    width: 100%;
+    padding: 0 10% 0;
 }
 
- .game-grid > span {
+.game-grid>span {
     border: 1px solid black;
 }
 
- .game-grid .category {
+.game-grid .category {
     background-color: rgb(1, 33, 100);
     color: white;
     padding: 1vh;
     text-transform: uppercase;
 }
 
- .game-grid .point {
+.game-grid .point {
     padding: 2vh;
 }
 
- .user-choices {
+.user-choices,
+.score {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 25%;
 }
 
- .score {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 25%;
-}
-
- .next-round-btn {
+.next-round-btn {
     align-self: self-end;
     width: 10%;
-    height: 5%;
-}
-
- .next-round-btn button {
-    width: 90%;
 }
 
 
@@ -140,52 +125,50 @@ footer {
     flex-direction: column;
 }
 
-.user-input input {
+.user-input input,
+.final-bet-btn {
     margin: 1vh;
 }
 
-.final-bet-btn {
-    margin: 0;
-}
 
 
 /* Icebox */
 /* Theme styles */
- .game-grid .point,
- .final-question {
+.game-grid .point,
+.final-question {
     color: rgb(242, 204, 3);
     background-color: rgb(1, 48, 148);
 }
 
-header h3 {
+h3 {
     font-family: 'Shadows Into Light', cursive, sans-serif;
 }
 
- .user-input input {
+.user-input input {
     font-family: 'Shadows Into Light', cursive, sans-serif;
 }
 
 /* Mobile responsive styles */
 @media screen and (max-width: 600px) {
-     main .next-round-btn {
+    main .next-round-btn {
         align-self: center;
     }
 }
 
 /* Animated elements */
- main button.play {
+button.play {
     animation: heartBeat;
     animation-duration: 5s;
     animation-iteration-count: infinite;
 }
 
- main .game-grid span.point:hover {
+.game-grid span.point:hover {
     animation: swing;
     animation-duration: 3s;
     animation-iteration-count: infinite;
 }
 
- main span.final-question:hover {
+span.final-question:hover {
     animation: pulse;
     animation-duration: 1s;
     animation-iteration-count: infinite;
