@@ -171,21 +171,13 @@ span.final-question:hover {
   animation-iteration-count: infinite;
 }
 
-/* page transition: TODO: add fade out or other fade out transition 
-                    TODO: replace fade in with cooler transition*/
+/* page transition */
 .transition-fade {
   opacity: 1;
-  transition: 2000ms;
-  transform: translateX(0);
-  transform-origin: left;
+  transition: 250ms;
+  transform: ease-in-out;
 }
 
 html.is-animating .transition-fade {
   opacity: 0;
-  transform: translateX(100%);
-}
-
-html.is-leaving .transition-fade {
-  opacity: 0;
-  transform: translateX(0);
 }
