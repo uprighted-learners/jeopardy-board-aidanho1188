@@ -1,93 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeopardy</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jeopardy</title>
-  <link rel="stylesheet" href="styles.css" type="text/css">
-</head>
+  <body>
+    <!-- Do not change the script source. Allows import/export to work. -->
+    <script src="./scripts/index.js" type="module"></script>
 
-<body>
-  <!-- Do not change the script source. Allows import/export to work. -->
-  <script src="./scripts/index.js" type="module"></script>
+    <header>
+      <h1>Round One</h1>
+      <h3>Player's turn</h3>
+    </header>
 
-  <header>
-    <h1>Round One</h1>
-    <h3>Player's turn</h3>
-  </header>
+    <main>
+      <div class="game-grid">
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
 
-  <main>
-    <div class="game-grid">
-      <span class="category">Category</span>
-      <span class="category">Category</span>
-      <span class="category">Category</span>
-      <span class="category">Category</span>
-      <span class="category">Category</span>
-      <span class="category">Category</span>
+        <span class="point">$200</span>
+        <span class="point">$200</span>
+        <span class="point">$200</span>
+        <span class="point">$200</span>
+        <span class="point">$200</span>
+        <span class="point">$200</span>
 
-      <span class="point">$200</span>
-      <span class="point">$200</span>
-      <span class="point">$200</span>
-      <span class="point">$200</span>
-      <span class="point">$200</span>
-      <span class="point">$200</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
 
-      <span class="point">$400</span>
-      <span class="point">$400</span>
-      <span class="point">$400</span>
-      <span class="point">$400</span>
-      <span class="point">$400</span>
-      <span class="point">$400</span>
+        <span class="point">$600</span>
+        <span class="point">$600</span>
+        <span class="point">$600</span>
+        <span class="point">$600</span>
+        <span class="point">$600</span>
+        <span class="point">$600</span>
 
-      <span class="point">$600</span>
-      <span class="point">$600</span>
-      <span class="point">$600</span>
-      <span class="point">$600</span>
-      <span class="point">$600</span>
-      <span class="point">$600</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
 
-      <span class="point">$800</span>
-      <span class="point">$800</span>
-      <span class="point">$800</span>
-      <span class="point">$800</span>
-      <span class="point">$800</span>
-      <span class="point">$800</span>
-
-      <span class="point">$1000</span>
-      <span class="point">$1000</span>
-      <span class="point">$1000</span>
-      <span class="point">$1000</span>
-      <span class="point">$1000</span>
-      <span class="point">$1000</span>
-    </div>
-
-    <div class="user-input">
-      <input type="text" placeholder="User Input...">
-    </div>
-
-    <div class="user-choices">
-      <button><a href="#">Guess</a></button>
-      <button><a href="#">Pass</a></button>
-    </div>
-
-    <div class="score">
-      <div class="player1-score">
-        <p><strong>Player 1 Score</strong>: 0</p>
+        <span class="point">$1000</span>
+        <span class="point">$1000</span>
+        <span class="point">$1000</span>
+        <span class="point">$1000</span>
+        <span class="point">$1000</span>
+        <span class="point">$1000</span>
       </div>
 
-      <div class="player2-score">
-        <p><strong>Player 2 Score</strong>: 0</p>
+      <div class="user-input">
+        <input type="text" placeholder="User Input..." />
       </div>
-    </div>
 
-    <div class="next-round-btn">
-      <button><a href="round-2.html">Next Round</a></button>
-    </div>
-  </main>
+      <div class="user-choices">
+        <button><a href="#">Guess</a></button>
+        <button><a href="#">Pass</a></button>
+      </div>
 
-  <footer>&copy 2023. All Rights Reserved.</footer>
-</body>
+      <div class="score">
+        <div class="player1-score">
+          <p><strong>Player 1 Score</strong>: 0</p>
+        </div>
 
+        <div class="player2-score">
+          <p><strong>Player 2 Score</strong>: 0</p>
+        </div>
+      </div>
+
+      <div class="next-round-btn">
+        <button><a href="round-2.html">Next Round</a></button>
+      </div>
+    </main>
+
+    <footer>&copy 2023. All Rights Reserved.</footer>
+  </body>
 </html>

@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Jeopardy</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Final Jeopardy</title>
-  <link rel="stylesheet" href="styles.css" type="text/css">
-</head>
+  <body>
+    <!-- Do not change the script source. Allows import/export to work. -->
+    <script src="./scripts/index.js" type="module"></script>
 
-<body>
+    <header>
+      <h1>Final Round</h1>
+      <h3>Player's turn</h3>
+    </header>
 
-  <!-- Do not change the script source. Allows import/export to work. -->
-  <script src="./scripts/index.js" type="module"></script>
+    <main>
+      <span class="final-category"> Final Category</span>
+      <span class="final-question"> Final Question</span>
 
-  <header>
-    <h1>Final Round</h1>
-    <h3>Player's turn</h3>
-  </header>
+      <div class="user-input">
+        <input type="text" placeholder="Point bet amount..." />
+        <input type="text" placeholder="Final answer..." />
+      </div>
 
-  <main>
-    <span class="final-category"> Final Category</span>
-    <span class="final-question"> Final Question</span>
+      <button class="final-bet-btn">
+        <a href="#">Bet</a>
+      </button>
+    </main>
 
-    <div class="user-input">
-      <input type="text" placeholder="Point bet amount...">
-      <input type="text" placeholder="Final answer...">
-    </div>
-
-    <button class="final-bet-btn">
-      <a href="#">Bet</a>
-    </button>
-  </main>
-
-  <footer>&copy 2023. All Rights Reserved.</footer>
-</body>
-
+    <footer>&copy 2023. All Rights Reserved.</footer>
+  </body>
 </html>
