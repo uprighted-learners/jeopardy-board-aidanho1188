@@ -12,8 +12,8 @@
 /* Container styles */
 body {
   display: grid;
-  grid-template-rows: 1fr 100fr 1fr;
-  /* 100fr take up as much space as possible */
+  grid-template-rows: 1fr 80% 1fr;
+  margin: 0;
   grid-template-areas:
     "header"
     "main"
@@ -32,8 +32,7 @@ main {
 footer {
   grid-area: footer;
   width: 50%;
-  align-items: end;
-  margin: auto;
+  margin: auto auto 0 auto;
   padding: 2vh;
   color: white;
   background-color: rgb(12, 32, 49);
