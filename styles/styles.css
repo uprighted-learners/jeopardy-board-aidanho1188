@@ -150,13 +150,18 @@ h3 {
     align-self: center;
   }
 
+  .game-grid .category {
+    font-size: xx-small;
+  }
+
   .game-grid {
     padding-left: 0%;
     padding-right: 0%;
   }
 
-  .game-grid .category {
-    font-size: xx-small;
+  .final-question {
+    margin-left: 1vh;
+    margin-right: 1vh;
   }
 
   .user-choices,
