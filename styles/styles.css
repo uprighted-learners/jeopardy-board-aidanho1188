@@ -149,6 +149,27 @@ h3 {
   main .next-round-btn {
     align-self: center;
   }
+
+  .game-grid {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .game-grid .category {
+    font-size: xx-small;
+  }
+
+  .user-choices,
+  .score {
+    flex-direction: column;
+  }
+
+  * {
+    min-width: -webkit-fill-available;
+    min-height: auto;
+    box-sizing: content-box;
+    padding: 0%;
+  }
 }
 
 /* Animated elements */
