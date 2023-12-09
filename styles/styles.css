@@ -115,6 +115,7 @@ a {
 .final-question {
   padding: 10%;
   width: 40%;
+  margin: 1vh;
   border: 1px solid black;
 }
 
@@ -157,11 +158,6 @@ h3 {
   .game-grid {
     padding-left: 0%;
     padding-right: 0%;
-  }
-
-  .final-question {
-    margin-left: 1vh;
-    margin-right: 1vh;
   }
 
   .user-choices,
