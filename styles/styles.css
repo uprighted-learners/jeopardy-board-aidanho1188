@@ -12,7 +12,7 @@
 /* Container styles */
 body {
   display: grid;
-  grid-template-rows: 1fr 80% 1fr;
+  grid-template-rows: 1fr 85% 1fr;
   margin: 0;
   grid-template-areas:
     "header"
@@ -71,8 +71,8 @@ button:hover {
 /* Page 1 and 2 styles */
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(6, auto);
   grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(6, auto);
   width: 100%;
   padding: 0 10% 0;
 }
@@ -92,11 +92,18 @@ button:hover {
   padding: 2vh;
 }
 
-.user-choices,
+.user-choices{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  justify-content: space-around;
+  /* width: 25%; */
+}
 .score {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* justify-content: space-around; */
   width: 25%;
 }
 
@@ -193,4 +200,27 @@ span.final-question:hover {
   animation: pulse;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+}
+
+/* popup */
+.popup {
+  background-color: rgba(6, 91, 161, 0.3);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* flex-direction: column; */
+}
+
+.popup-content {
+  height: 50%;
+  width: 50%;
+  background-color: rgb(51, 98, 199);
+  padding: 5vw;
+  border-radius: 5px;
+  position: static;
 }
