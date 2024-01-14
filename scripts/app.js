@@ -1,32 +1,54 @@
 import placeholderQuestions from "./placeholder-questions.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
+import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore} from "./ui.js";
+
+const urlParams = new URLSearchParams(window.location.search);
+const round = urlParams.get("round");
 
 const nextRoundBtn = document.getElementById("next-round");
 const guessBtn = document.getElementById("guess-btn");
 const passBtn = document.getElementById("pass-btn");
 const categories = document.querySelectorAll(".category");
 const cards = document.querySelectorAll(".point");
-const popup = document.querySelector(".popup");
 const showQuestion = document.getElementById("question");
-const overlay = document.querySelector(".overlay");
-const playerOneScore = document.getElementById("player1-score");
-const playerTwoScore = document.getElementById("player2-score");
-let turns = document.getElementById("turns");
+let turnsDisplay = document.getElementById("turns");
 
 nextRoundBtn.style.visibility = "hidden";
 
 let questions = {...placeholderQuestions};
-let round = 1; // TODO: change this based on query parameters
 let answer;
 let questionPoints;
 let playerOneTurn = false;
 let playerTwoTurn = false;
+const game = initializeGame();
 
+guessBtn.addEventListener("click", handleGuess);
+passBtn.addEventListener("click", handlePass);
+nextRoundBtn.addEventListener("click", handleNextRound);
+
+function initializeGame() {
+  const game = new Game(round, cards, questions, categories);
+  const player1 = new Player("Player 1");
+  const player2 = new Player("Player 2");
+  game.setUp();
+  game.addPlayer(player1);
+  game.addPlayer(player2);
+  displayTurn(game.getCurrentTurn());
+  if (urlParams.has("playerOneScore") && urlParams.has("playerTwoScore")) {
+    const playerOneScore = urlParams.get("playerOneScore");
+    const playerTwoScore = urlParams.get("playerTwoScore");
+    loadScore(playerOneScore, playerTwoScore);
+  }
+  return game;
+}
+
+initializeCardClickListeners();
 function initializeCardClickListeners() {
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       handleCardClick(card);
+      console.log(round);
     });
   });
 }
@@ -50,26 +72,30 @@ function handleGuess() {
     game.switchTurn();
     displayTurn(game.getCurrentTurn());
   }
-  checkTurns();
-  updateScore(game.getCurrentPlayer());
+  checkGameLogic();
+  updateScore(game);
 }
 
 function handlePass() {
   countTurn();
   game.switchTurn();
   displayTurn(game.getCurrentTurn());
-  checkTurns();
+  checkGameLogic();
 }
 
+// this need to be more dynamic
 function handleNextRound() {
-  window.location = "/round-2.html"; // pass query parameter here
+  const queryParams = new URLSearchParams({
+    round: "2",
+    playerOneScore: game.getPlayers()[0].score,
+    playerTwoScore: game.getPlayers()[1].score,
+  });
+  const urlWithParams = `/round-2.html?${queryParams.toString()}`;
+  window.location = urlWithParams;
 }
 
 // helper functions
 function countTurn() {
-  // 0 is player 1
-  // 1 is player 2
-  // these are indexes and it also used as true/false values in getCurrentPlayer
   if (game.getCurrentTurn() === 0) {
     playerOneTurn = true;
   } else if (game.getCurrentTurn() === 1) {
@@ -96,68 +122,28 @@ function resetTurns() {
 function checkAnswer(input) {
   input = input.toLowerCase();
   answer = answer.toLowerCase();
-  if (input === answer) {
-    return true;
-  } else {
-    return false;
-  }
+  return input === answer;
 }
 
-const game = new Game(round, cards, questions, categories);
-
-setUpGame();
-
-function setUpGame() {
-  initializeCardClickListeners();
-  const player1 = new Player("Player 1");
-  const player2 = new Player("Player 2");
-  game.setUp();
-  game.addPlayer(player1);
-  game.addPlayer(player2);
-  guessBtn.addEventListener("click", handleGuess);
-  passBtn.addEventListener("click", handlePass);
-  nextRoundBtn.addEventListener("click", handleNextRound);
-  gameLoop(game);
-}
-
-async function gameLoop(game) {
-  let isOver = game.getPlayers().forEach((player) => {
-    if (player.score > 15000) {
-      return true;
-    } else {
-      return false;
-    }
-  });
+function checkGameLogic() {
+  checkTurns();
   displayTurn(game.getCurrentTurn());
-  //TODO: if player reach 15k points or board is cleared
-}
-
-function displayTurn(isPlayerTwoTurn) {
-  if (!isPlayerTwoTurn) {
-    turns.textContent = `Player one's turn`;
-  } else {
-    turns.textContent = `Player two's turn`;
+  if (scoreIsReached() || boardIsCleared()) {
+    nextRoundBtn.style.visibility = "visible";
+    turnsDisplay.textContent = "Rounds over!";
+    disableCards();
   }
 }
 
-function showPopUp() {
-  popup.classList.remove("hide");
-  popup.classList.toggle("show");
-  overlay.classList.toggle("show");
-}
-
-function hidePopUp() {
-  popup.classList.toggle("hide");
-  popup.classList.remove("show");
-  overlay.classList.remove("show");
-}
-
-function updateScore(player) {
-  game.getPlayers().forEach((player) => {
-    if (player.name === "Player 1") {
-      playerOneScore.textContent = player.score;
-    } else if (player.name === "Player 2") {
-      playerTwoScore.textContent = player.score;
-    }
+function disableCards() {
+  cards.forEach((card) => {
+    card.style.pointerEvents = "none";
   });
+}
+function boardIsCleared() {
+  return Array.from(cards).every((card) => card.style.visibility === "hidden");
+}
+
+function scoreIsReached() {
+  return game.getPlayers().some((player) => player.score >= 200); // TODO: change this later
 }

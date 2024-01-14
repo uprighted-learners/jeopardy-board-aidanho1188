@@ -2,10 +2,10 @@ class Game {
   _availableCategory = [];
   _availableQuestion = [];
   _availableAnswer = [];
-  constructor(round, cards, questions, categories, startIndex = 0) {
-    this._round = round;
+  constructor(round, cards, questions, categories) {
+    this._round = parseInt(round);
     this._cards = cards;
-    this._startIndex = startIndex; // start index for placeholder question
+    this._startIndex = setStartingIndex(this._round, this._startIndex); // start index for placeholder question
     this._questions = questions;
     this._categories = categories;
     this._players = [];
@@ -13,6 +13,10 @@ class Game {
   }
 
   setUp() {
+    // ignore all of this if it round 3
+    if (this._round === 3) {
+      return;
+    }
     convertToArrays(this._questions, this._availableCategory, this._availableQuestion, this._availableAnswer);
     fillCategories(this._categories, this._availableCategory);
     markCardsWithCategory(this._cards, this._availableCategory);
@@ -45,6 +49,14 @@ class Game {
   }
 }
 export default Game;
+
+function setStartingIndex(round, startIndex) {
+  if (round === 1) {
+    return 0;
+  } else if (round === 2) {
+    return 5;
+  }
+}
 
 function convertToArrays(questions, availableCategory, availableQuestion, availableAnswer) {
   for (const key in questions) {

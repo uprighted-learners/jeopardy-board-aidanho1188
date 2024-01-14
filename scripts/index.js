@@ -1,7 +1,9 @@
 const playBnt = document.getElementById("play");
 
 playBnt.addEventListener("click", () => {
-  window.location = "/round-1.html";
+  const queryParams = new URLSearchParams({round: '1'});
+  const urlWithParams = `/round-1.html?${queryParams.toString()}`;
+  window.location = urlWithParams;
 });
 
 
