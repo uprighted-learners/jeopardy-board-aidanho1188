@@ -62,12 +62,6 @@ button:hover {
   transition: 0.5s;
 }
 
-/* a {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-} */
-
 /* Page 1 and 2 styles */
 .game-grid {
   display: grid;
@@ -95,15 +89,13 @@ button:hover {
 .user-choices{
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   justify-content: space-around;
-  /* width: 25%; */
 }
+
 .score {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* justify-content: space-around; */
   width: 25%;
 }
 
@@ -204,23 +196,45 @@ span.final-question:hover {
 
 /* popup */
 .popup {
-  background-color: rgba(6, 91, 161, 0.3);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
   display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  /* flex-direction: column; */
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.popup.show {
+  display: block;
+  animation: backInDown 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.popup.hide {
+  animation: backOutDown 0.5s ease-in-out;
+  opacity: 0;
 }
 
 .popup-content {
-  height: 50%;
-  width: 50%;
   background-color: rgb(51, 98, 199);
   padding: 5vw;
   border-radius: 5px;
-  position: static;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
 }

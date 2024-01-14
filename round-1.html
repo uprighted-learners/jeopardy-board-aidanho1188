@@ -59,35 +59,13 @@
         <span class="point">$1000</span>
       </div>
 
-      <!-- <div class="user-input">
-        <input type="text" placeholder="User Input..." />
-      </div>
-
-      <div class="user-choices">
-        <button id="guess-btn">Guess</button>
-        <button id="pass-btn">Pass</button>
-      </div> -->
-
-      <div class="popup">
-        <div class="popup-content">
-          <h3 id="question">Insert Question Here</h3>
-          <div class="user-input">
-            <input id="player-answer" type="text" placeholder="Enter your answer..." >
-          </div>
-          <div class="user-choices">
-            <button id="guess-btn">Guess</button>
-            <button id="pass-btn">Pass</button>
-          </div>
-        </div>
-      </div>
-
       <div class="score">
-        <div class="player1-score">
-          <p><strong>Player 1 Score</strong>: 0</p>
+        <div>
+          <p><strong>Player 1 Score</strong>: <div id="player1-score">0</div></p>
         </div>
 
-        <div class="player2-score">
-          <p><strong>Player 2 Score</strong>: 0</p>
+        <div>
+          <p><strong>Player 2 Score</strong>: <div id="player2-score">0</div></p>
         </div>
       </div>
 
@@ -96,6 +74,21 @@
       </div>
       <footer>&copy 2023. All Rights Reserved.</footer>
     </main>
+
+    <div class="overlay">
+    <div class="popup">
+      <div class="popup-content">
+        <h3 id="question">Insert Question Here</h3>
+        <div class="user-input">
+          <input id="player-answer" type="text" placeholder="Enter your answer..." >
+        </div>
+        <div class="user-choices">
+          <button id="guess-btn">Guess</button>
+          <button id="pass-btn">Pass</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Do not change the script source. Allows import/export to work. -->
     <script src="./scripts/app.js" type="module"></script>
   </body>
