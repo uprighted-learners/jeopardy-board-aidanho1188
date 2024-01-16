@@ -5,6 +5,7 @@ const overlay = document.querySelector(".overlay");
 let turnsDisplay = document.getElementById("turns");
 const availablePoints = document.getElementById("playerPoints");
 const popupTurnDisplay = document.getElementById("popup-turn");
+const notification = document.querySelector(".notification");
 
 export function loadScore(playerOneScore, playerTwoScore) {
   playerOneScoreDisplay.textContent = playerOneScore;
@@ -57,6 +58,18 @@ export function hidePopUp() {
   }, 500);
 }
 
+export function showTurnNotification(game) {
+  notification.innerHTML = `<h3>${game.getCurrentPlayer().name}'s turn</h3>`;
+  notification.classList.toggle("show");
+  setTimeout(() => {
+    notification.classList.toggle("hide");
+    setTimeout(() => {
+      notification.classList.remove("show");
+      notification.classList.remove("hide");
+    }, 1000);
+  }, 1000);
+}
+
 export function disableCard(card) {
   card.textContent = "";
   card.style.pointerEvents = "none";
@@ -70,10 +83,10 @@ export function removeContent(parentNode) {
 
 export function findWinner(game) {
   const [player1, player2] = game.getPlayers();
-  if(player1.score > player2.score) {
+  if (player1.score > player2.score) {
     return `<h3>Congratulations! <i>${player1.name} emerged victorious with ${player1.score} points! surpassing ${player2.name} who scored ${player2.score} points<i></h3>`;
   } else if (player1.score < player2.score) {
-    return `<h3>Congratulations! <i>${player2.name} emerged victorious with ${player2.score} points! surpassing ${player1.name} iwho scored ${player1.score} points<i></h3>`
+    return `<h3>Congratulations! <i>${player2.name} emerged victorious with ${player2.score} points! surpassing ${player1.name} iwho scored ${player1.score} points<i></h3>`;
   } else {
     return `<h3>Congratulations! <i>Both ${player1.name} and ${player2.name} achieved victory with an equal score of  ${player1.score} points!<i></h3>`;
   }

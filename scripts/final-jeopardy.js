@@ -1,7 +1,7 @@
 import placeholderQuestions from "./placeholder-questions.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
-import {showPopUp, displayTurn, setScore, hidePopUp, hideTurn, updateTurnDisplay, clearInput, removeContent, findWinner} from "./ui.js";
+import {showPopUp, displayTurn, setScore, hidePopUp, hideTurn, updateTurnDisplay, clearInput, removeContent, findWinner, showTurnNotification} from "./ui.js";
 
 const finalCategory = document.querySelector(".final-category");
 const finalQuestion = document.querySelector(".final-question");
@@ -39,6 +39,7 @@ function handleClick() {
   popupCategoryDisplay.textContent = `Category: ${getValueFromJson("category")}`;
   updateTurnDisplay(game);
   showPopUp();
+  showTurnNotification(game);
 }
 
 function handleBet() {
@@ -51,6 +52,7 @@ function handleBet() {
     game.getCurrentPlayer().bet = playerBet.value;
     game.switchTurn();
     updateTurnDisplay(game);
+    showTurnNotification(game);
     clearInput(playerBet);
     if (playerTwoTurnIsDone("bet")) {
       hidePopUp();
@@ -72,6 +74,7 @@ function handleSubmit() {
   game.switchTurn();
   clearInput(finalAnswer);
   displayTurn(game.getCurrentPlayer());
+  showTurnNotification(game);
   if (playerTwoTurnIsDone("answer")) {
     userInput.style.visibility = "hidden";
     const [player1, player2] = game.getPlayers();

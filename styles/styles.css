@@ -239,3 +239,24 @@ span.final-question:hover {
 .overlay.show {
   display: block;
 }
+
+.notification {
+  display: block;
+  position: fixed;
+  opacity: 0;
+  background-color: rgb(51, 98, 199);
+  padding: 1vw;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
+.notification.show {
+  display: block;
+  animation: fadeInDown 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.notification.hide {
+  animation: fadeOutUp 0.5s ease-in-out;
+  opacity: 0;
+}

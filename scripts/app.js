@@ -1,7 +1,7 @@
 import placeholderQuestions from "./placeholder-questions.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
-import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore, clearInput, disableCard} from "./ui.js";
+import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore, clearInput, disableCard, showTurnNotification} from "./ui.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 let round = urlParams.get("round");
@@ -15,6 +15,7 @@ const showQuestion = document.getElementById("question");
 let turnsDisplay = document.getElementById("turns");
 
 let questions = {...placeholderQuestions};
+let question;
 let answer;
 let questionPoints;
 let playerOneTurn = false;
@@ -52,27 +53,37 @@ function initializeCardClickListeners() {
 }
 
 function handleCardClick(card) {
-  showPopUp();
   questionPoints = parseFloat(card.textContent.slice(1));
-  showQuestion.textContent = card.getAttribute("data.question");
+  question = card.getAttribute("data.question");
   answer = card.getAttribute("data.answer");
+  showQuestion.textContent = question;
+  showPopUp();
   disableCard(card);
+  showTurnNotification(game);
 }
 
 function handleGuess() {
   const playerAnswer = document.getElementById("player-answer");
   if (checkAnswer(playerAnswer.value)) {
     game.getCurrentPlayer().score += questionPoints;
-    hidePopUp();
+    showQuestion.textContent = "Correct!";
+    setTimeout(() => {
+      hidePopUp();
+    }, 2000);
   } else {
     game.getCurrentPlayer().score -= questionPoints;
     countTurn();
     game.switchTurn();
     clearInput(playerAnswer);
+    showQuestion.textContent = "Incorrect!";
     displayTurn(game.getCurrentPlayer());
+    setTimeout(() => {
+      showQuestion.textContent = question;
+    }, 2000);
   }
   checkGameLogic();
   updateScore(game);
+  showTurnNotification(game);
 }
 
 function handlePass() {
@@ -82,6 +93,7 @@ function handlePass() {
   clearInput(playerAnswer);
   displayTurn(game.getCurrentPlayer());
   checkGameLogic();
+  showTurnNotification(game);
 }
 
 function handleNextRound() {
