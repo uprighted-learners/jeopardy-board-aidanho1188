@@ -98,12 +98,14 @@ function handleContinue() {
 }
 
 function validBetPoints(playerBet) {
-  if (playerBet.value > parseFloat(game.getCurrentPlayer().score)) {
-    return -1;
-  } else if (playerBet.value < 0 || isEmpty(playerBet)) {
+  let playerScore = parseFloat(game.getCurrentPlayer().score);
+  if (playerBet.value < 0 || isEmpty(playerBet)) {
     return 0;
-  } else {
+  }
+  if (playerScore >= playerBet.value > 0 || (playerScore <= 0 && playerBet.value == 0)) {
     return 1;
+  } else {
+    return -1;
   }
 }
 

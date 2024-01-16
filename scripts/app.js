@@ -2,8 +2,6 @@ import placeholderQuestions from "./placeholder-questions.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
 import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore, clearInput, disableCard, showTurnNotification} from "./ui.js";
-import {isEmpty} from "./final-jeopardy.js";
-
 const urlParams = new URLSearchParams(window.location.search);
 let round = urlParams.get("round");
 
@@ -65,7 +63,7 @@ function handleCardClick(card) {
 
 function handleGuess() {
   const playerAnswer = document.getElementById("player-answer");
-  if (isEmpty(finalAnswer)) {
+  if (playerAnswer.value === "") {
     alert("Please enter something");
     return false;
   }

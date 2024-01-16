@@ -67,7 +67,7 @@ export function showTurnNotification(game) {
       notification.classList.remove("show");
       notification.classList.remove("hide");
     }, 1000);
-  }, 1000);
+  }, 2000);
 }
 
 export function disableCard(card) {
