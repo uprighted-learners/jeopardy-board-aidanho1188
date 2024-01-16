@@ -1,10 +1,10 @@
 import placeholderQuestions from "./placeholder-questions.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
-import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore} from "./ui.js";
+import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore, clearInput, disableCard} from "./ui.js";
 
 const urlParams = new URLSearchParams(window.location.search);
-const round = urlParams.get("round");
+let round = urlParams.get("round");
 
 const nextRoundBtn = document.getElementById("next-round");
 const guessBtn = document.getElementById("guess-btn");
@@ -13,8 +13,6 @@ const categories = document.querySelectorAll(".category");
 const cards = document.querySelectorAll(".point");
 const showQuestion = document.getElementById("question");
 let turnsDisplay = document.getElementById("turns");
-
-nextRoundBtn.style.visibility = "hidden";
 
 let questions = {...placeholderQuestions};
 let answer;
@@ -34,7 +32,8 @@ function initializeGame() {
   game.setUp();
   game.addPlayer(player1);
   game.addPlayer(player2);
-  displayTurn(game.getCurrentTurn());
+  nextRoundBtn.style.visibility = "hidden";
+  displayTurn(game.getCurrentPlayer());
   if (urlParams.has("playerOneScore") && urlParams.has("playerTwoScore")) {
     const playerOneScore = urlParams.get("playerOneScore");
     const playerTwoScore = urlParams.get("playerTwoScore");
@@ -48,21 +47,20 @@ function initializeCardClickListeners() {
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       handleCardClick(card);
-      console.log(round);
     });
   });
 }
 
 function handleCardClick(card) {
-  card.style.visibility = "hidden";
   showPopUp();
   questionPoints = parseFloat(card.textContent.slice(1));
   showQuestion.textContent = card.getAttribute("data.question");
   answer = card.getAttribute("data.answer");
+  disableCard(card);
 }
 
 function handleGuess() {
-  let playerAnswer = document.getElementById("player-answer");
+  const playerAnswer = document.getElementById("player-answer");
   if (checkAnswer(playerAnswer.value)) {
     game.getCurrentPlayer().score += questionPoints;
     hidePopUp();
@@ -70,35 +68,50 @@ function handleGuess() {
     game.getCurrentPlayer().score -= questionPoints;
     countTurn();
     game.switchTurn();
-    displayTurn(game.getCurrentTurn());
+    clearInput(playerAnswer);
+    displayTurn(game.getCurrentPlayer());
   }
   checkGameLogic();
   updateScore(game);
 }
 
 function handlePass() {
+  const playerAnswer = document.getElementById("player-answer");
   countTurn();
   game.switchTurn();
-  displayTurn(game.getCurrentTurn());
+  clearInput(playerAnswer);
+  displayTurn(game.getCurrentPlayer());
   checkGameLogic();
 }
 
-// this need to be more dynamic
 function handleNextRound() {
+  let urlWithParams;
+  round = parseFloat(round);
+  round++;
   const queryParams = new URLSearchParams({
-    round: "2",
+    round: round,
     playerOneScore: game.getPlayers()[0].score,
     playerTwoScore: game.getPlayers()[1].score,
   });
-  const urlWithParams = `/round-2.html?${queryParams.toString()}`;
+  if (round === 3) {
+    urlWithParams = `/final-jeopardy.html?${queryParams.toString()}`;
+  } else {
+    urlWithParams = `/round-2.html?${queryParams.toString()}`;
+  }
   window.location = urlWithParams;
 }
 
 // helper functions
+function checkAnswer(input) {
+  input = input.toLowerCase();
+  answer = answer.toLowerCase();
+  return input === answer;
+}
+
 function countTurn() {
-  if (game.getCurrentTurn() === 0) {
+  if (game.getCurrentPlayer().name === "Player 1") {
     playerOneTurn = true;
-  } else if (game.getCurrentTurn() === 1) {
+  } else if (game.getCurrentPlayer().name === "Player 2") {
     playerTwoTurn = true;
   }
 }
@@ -119,23 +132,17 @@ function resetTurns() {
   playerTwoTurn = false;
 }
 
-function checkAnswer(input) {
-  input = input.toLowerCase();
-  answer = answer.toLowerCase();
-  return input === answer;
-}
-
 function checkGameLogic() {
   checkTurns();
-  displayTurn(game.getCurrentTurn());
+  displayTurn(game.getCurrentPlayer());
   if (scoreIsReached() || boardIsCleared()) {
     nextRoundBtn.style.visibility = "visible";
     turnsDisplay.textContent = "Rounds over!";
-    disableCards();
+    disableBoard();
   }
 }
 
-function disableCards() {
+function disableBoard() {
   cards.forEach((card) => {
     card.style.pointerEvents = "none";
   });

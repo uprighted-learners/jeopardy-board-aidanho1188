@@ -2,7 +2,7 @@
 @import url("manuel-style.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
 @import url("https://github.com/IanLunn/Hover/blob/master/css/hover.css");
-
+@import url("keyframes.css");
 /* Global styles */
 * {
   text-align: center;
@@ -12,7 +12,7 @@
 /* Container styles */
 body {
   display: grid;
-  grid-template-rows: 1fr 85% 1fr;
+  grid-template-rows: 1fr 85%;
   margin: 0;
   grid-template-areas:
     "header"
@@ -99,7 +99,8 @@ button:hover {
   width: 25%;
 }
 
-.next-round-btn {
+.next-round-btn,
+#continue-btn {
   align-self: self-end;
   width: 10%;
 }
@@ -127,7 +128,7 @@ button:hover {
 }
 
 .user-input input,
-.final-bet-btn {
+.submit-btn {
   margin: 1vh;
 }
 
@@ -202,14 +203,13 @@ span.final-question:hover {
   top: 50%;
   left: 50%;
   border-radius: 5px;
-  transform: translate(-50% -50%);
+  transform: translate(-50%, -50%);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
 }
 
 .popup.show {
   display: block;
-  transform: translateX(-50%);
   animation: backInDown 0.5s ease-in-out;
   opacity: 1;
 }

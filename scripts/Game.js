@@ -2,7 +2,7 @@ class Game {
   _availableCategory = [];
   _availableQuestion = [];
   _availableAnswer = [];
-  constructor(round, cards, questions, categories) {
+  constructor(round ="1", cards, questions, categories) {
     this._round = parseInt(round);
     this._cards = cards;
     this._startIndex = setStartingIndex(this._round, this._startIndex); // start index for placeholder question
@@ -13,10 +13,6 @@ class Game {
   }
 
   setUp() {
-    // ignore all of this if it round 3
-    if (this._round === 3) {
-      return;
-    }
     convertToArrays(this._questions, this._availableCategory, this._availableQuestion, this._availableAnswer);
     fillCategories(this._categories, this._availableCategory);
     markCardsWithCategory(this._cards, this._availableCategory);

@@ -11,7 +11,7 @@
   <body>
     <header>
       <h1>Final Round</h1>
-      <h3>Player's turn</h3>
+      <h3 id="turns">Player's turn</h3>
     </header>
 
     <main>
@@ -19,18 +19,34 @@
       <span class="final-question"> Final Question</span>
 
       <div class="user-input">
-        <input type="text" placeholder="Point bet amount..." />
-        <input type="text" placeholder="Final answer..." />
+        <input id="player-answer" type="text" placeholder="Final answer..." required/>
+        <button class="submit-btn">Submit</button>
       </div>
 
-      <button class="final-bet-btn">
-        <a href="#">Bet</a>
-      </button>
+      <button id="continue-btn">Continue</button>
+      <footer>&copy 2023. All Rights Reserved.</footer>
     </main>
 
-    <footer>&copy 2023. All Rights Reserved.</footer>
-
+    <div class="overlay">
+      <div class="popup">
+        <div class="popup-content">
+          <h3 id="popup-turn">Players turn to wager</h3>
+          <h3 id="popup-category">Category: </h3>
+          <h4 id="playerPoints">Available points:</h4>
+          <div class="user-input">
+            <input id="player-bet" type="number" placeholder="Points to wager...">
+          </div>
+          <div class="user-choices">
+            <button id="bet-btn">Bet</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Do not change the script source. Allows import/export to work. -->
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/final-jeopardy.js" type="module"></script>
   </body>
 </html>
+
+
+
+
