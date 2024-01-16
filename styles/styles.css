@@ -243,11 +243,12 @@ span.final-question:hover {
 .notification {
   display: block;
   position: fixed;
+  width: 100%;
   opacity: 0;
   background-color: rgb(51, 98, 199);
   padding: 1vw;
   border-radius: 5px;
-  z-index: 1001;
+  z-index: 2000;
 }
 
 .notification.show {

@@ -2,6 +2,7 @@ import placeholderQuestions from "./placeholder-questions.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
 import {updateScore, displayTurn, showPopUp, hidePopUp, loadScore, clearInput, disableCard, showTurnNotification} from "./ui.js";
+import {isEmpty} from "./final-jeopardy.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 let round = urlParams.get("round");
@@ -64,11 +65,18 @@ function handleCardClick(card) {
 
 function handleGuess() {
   const playerAnswer = document.getElementById("player-answer");
+  if (isEmpty(finalAnswer)) {
+    alert("Please enter something");
+    return false;
+  }
+
   if (checkAnswer(playerAnswer.value)) {
+    disableInputButtons(guessBtn, passBtn);
     game.getCurrentPlayer().score += questionPoints;
     showQuestion.textContent = "Correct!";
     setTimeout(() => {
       hidePopUp();
+      enableInputButtons(passBtn, passBtn);
     }, 2000);
   } else {
     game.getCurrentPlayer().score -= questionPoints;
@@ -159,6 +167,17 @@ function disableBoard() {
     card.style.pointerEvents = "none";
   });
 }
+
+function disableInputButtons() {
+  guessBtn.disabled = true;
+  passBtn.disabled = true;
+}
+
+function enableInputButtons() {
+  guessBtn.disabled = false;
+  passBtn.disabled = false;
+}
+
 function boardIsCleared() {
   return Array.from(cards).every((card) => card.style.visibility === "hidden");
 }
