@@ -181,5 +181,5 @@ function boardIsCleared() {
 }
 
 function scoreIsReached() {
-  return game.getPlayers().some((player) => player.score >= 200); // TODO: change this later
+  return game.getPlayers().some((player) => player.score >= 15000); // winning score, can change this for testing purposes
 }
