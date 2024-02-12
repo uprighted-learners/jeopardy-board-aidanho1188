@@ -1,0 +1,23 @@
+/* Background gradient created by manuel on codepen
+https://codepen.io/P1N2O/pen/pyBNzX 
+(edited color to purple and blue to match the theme)*/
+/* Extended Styles - extends styles.css */
+
+body {
+	background: linear-gradient(-45deg, #b052ee50, #3c3fe769, rgba(136, 27, 238, 0.418), rgba(95, 153, 140, 0.452));
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

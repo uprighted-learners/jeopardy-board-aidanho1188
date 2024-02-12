@@ -5,9 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jeopardy</title>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" />
   </head>
+
   <body>
-    <h1>Welcome to Jeopardy!</h1>
+    <!-- grid column layout -->
+    <header>
+      <h1>Welcome to Jeopardy!</h1>
+    </header>
+
+    <main>
+      <div class="banner">
+        <img
+          src="https://public-assets-pressexpress.s3.amazonaws.com/assets/releases/docimages/b40eb85f/JS40ShowDescriptionFinal_html_6427e8c8ab4590d5.jpg"
+          alt="Jeopardy-banner"
+        />
+      </div>
+
+      <button id="play">Start Game</button>
+    </main>
+
+    <footer>&copy <span id="copyrightYear"></span>. All Rights Reserved.</footer>
+    <script src="./scripts/copyrightUpdate.js"></script>
     <!-- Do not change the script source. Allows import/export to work. -->
     <script src="./scripts/index.js" type="module"></script>
   </body>

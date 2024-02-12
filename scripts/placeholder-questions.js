@@ -28,14 +28,12 @@ const placeholderQuestions = [
   },
   {
     category: "Nature",
-    question:
-      "Alzheimer's disease primarily affects which part of the human body?",
+    question: "Alzheimer's disease primarily affects which part of the human body?",
     answer: "Brain",
   },
   {
     category: "Nature",
-    question:
-      "What was the name of the first artificial Earth satellite, launched by the Soviet Union in 1957?",
+    question: "What was the name of the first artificial Earth satellite, launched by the Soviet Union in 1957?",
     answer: "Sputnik 1",
   },
   {
@@ -65,8 +63,7 @@ const placeholderQuestions = [
   },
   {
     category: "Animals",
-    question:
-      "The Kakapo is a large, flightless, nocturnal parrot native to which country?",
+    question: "The Kakapo is a large, flightless, nocturnal parrot native to which country?",
     answer: "New Zealand",
   },
   {
@@ -131,8 +128,7 @@ const placeholderQuestions = [
   },
   {
     category: "Computers",
-    question:
-      "The series of the Intel HD graphics generation succeeding that of the 5000 and 6000 series (Broadwell) is called:",
+    question: "The series of the Intel HD graphics generation succeeding that of the 5000 and 6000 series (Broadwell) is called:",
     answer: "HD Graphics 500",
   },
   {
@@ -147,8 +143,7 @@ const placeholderQuestions = [
   },
   {
     category: "Computers",
-    question:
-      "Which programming language shares its name with an island in Indonesia?",
+    question: "Which programming language shares its name with an island in Indonesia?",
     answer: "Java",
   },
   {
@@ -158,32 +153,27 @@ const placeholderQuestions = [
   },
   {
     category: "Mythology",
-    question:
-      "Who was the only god from Greece who did not get a name change in Rome?",
+    question: "Who was the only god from Greece who did not get a name change in Rome?",
     answer: "Apollo",
   },
   {
     category: "Mythology",
-    question:
-      "Who in Greek mythology, who led the Argonauts in search of the Golden Fleece?",
+    question: "Who in Greek mythology, who led the Argonauts in search of the Golden Fleece?",
     answer: "Jason",
   },
   {
     category: "Mythology",
-    question:
-      "This Greek goddess's name was chosen for the dwarf planet responsible for discord on Pluto's classification amongst astronomers.",
+    question: "This Greek goddess's name was chosen for the dwarf planet responsible for discord on Pluto's classification amongst astronomers.",
     answer: "Eris",
   },
   {
     category: "Mythology",
-    question:
-      "Which Greek and Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?",
+    question: "Which Greek and Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?",
     answer: "Apollo",
   },
   {
     category: "Mythology",
-    question:
-      "Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?",
+    question: "Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?",
     answer: "Orpheus",
   },
   {
@@ -193,8 +183,7 @@ const placeholderQuestions = [
   },
   {
     category: "Mythology",
-    question:
-      "Which of these mythological creatures is said to be half-man and half-horse?",
+    question: "Which of these mythological creatures is said to be half-man and half-horse?",
     answer: "Centaur",
   },
   {
@@ -204,14 +193,12 @@ const placeholderQuestions = [
   },
   {
     category: "Mythology",
-    question:
-      "What mytological creatures have women's faces and vultures' bodies?",
+    question: "What mytological creatures have women's faces and vultures' bodies?",
     answer: "Harpies",
   },
   {
     category: "Mythology",
-    question:
-      "The Nike apparel and footwear brand takes it's name from the Greek goddess of what?",
+    question: "The Nike apparel and footwear brand takes it's name from the Greek goddess of what?",
     answer: "Victory",
   },
   {
@@ -221,8 +208,7 @@ const placeholderQuestions = [
   },
   {
     category: "History",
-    question:
-      "The original Roman alphabet lacked the following letters EXCEPT:",
+    question: "The original Roman alphabet lacked the following letters EXCEPT:",
     answer: "X",
   },
   {
@@ -237,8 +223,7 @@ const placeholderQuestions = [
   },
   {
     category: "History",
-    question:
-      "Which modern day country is the region that was known as Phrygia in ancient times?",
+    question: "Which modern day country is the region that was known as Phrygia in ancient times?",
     answer: "Turkey",
   },
   {
@@ -263,14 +248,12 @@ const placeholderQuestions = [
   },
   {
     category: "History",
-    question:
-      "Abolitionist John Brown raided the arsenal in which Virginia Town?",
+    question: "Abolitionist John Brown raided the arsenal in which Virginia Town?",
     answer: "Harper's Ferry",
   },
   {
     category: "General",
-    question:
-      "Which company did Valve cooperate with in the creation of the Vive?",
+    question: "Which company did Valve cooperate with in the creation of the Vive?",
     answer: "HTC",
   },
   {
@@ -300,8 +283,7 @@ const placeholderQuestions = [
   },
   {
     category: "General",
-    question:
-      "When someone is cowardly, they are said to have what color belly?",
+    question: "When someone is cowardly, they are said to have what color belly?",
     answer: "Yellow",
   },
   {

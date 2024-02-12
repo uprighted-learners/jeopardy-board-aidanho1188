@@ -5,11 +5,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jeopardy</title>
-    <script src="./scripts/index.js" type="module"></script>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" />
   </head>
+
   <body>
-    <h1>Second Round</h1>
+    <header>
+      <h1>Round Two</h1>
+      <h3 id="turns">Player's turn</h3>
+    </header>
+
+    <main>
+      <div class="game-grid">
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+        <span class="category">Category</span>
+
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+        <span class="point">$400</span>
+
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+        <span class="point">$800</span>
+
+        <span class="point">$1200</span>
+        <span class="point">$1200</span>
+        <span class="point">$1200</span>
+        <span class="point">$1200</span>
+        <span class="point">$1200</span>
+        <span class="point">$1200</span>
+
+        <span class="point">$1600</span>
+        <span class="point">$1600</span>
+        <span class="point">$1600</span>
+        <span class="point">$1600</span>
+        <span class="point">$1600</span>
+        <span class="point">$1600</span>
+
+        <span class="point">$2000</span>
+        <span class="point">$2000</span>
+        <span class="point">$2000</span>
+        <span class="point">$2000</span>
+        <span class="point">$2000</span>
+        <span class="point">$2000</span>
+      </div>
+
+      <div class="score">
+        <div>
+          <p><strong>Player 1 Score</strong>: <div id="player1-score">0</div></p>
+        </div>
+
+        <div>
+          <p><strong>Player 2 Score</strong>: <div id="player2-score">0</div></p>
+        </div>
+      </div>
+
+      <div class="next-round-btn">
+        <button id="next-round">Final Round</button>
+      </div>
+      <footer>&copy <span id="copyrightYear"></span>. All Rights Reserved.</footer>
+    </main>
+
+    
+    <div class="notification">
+      <h3 id="popup-turn">Players turn</h3>
+    </div>
+
+    <div class="overlay">
+      <div class="popup">
+        <div class="popup-content">
+          <h3 id="question">Insert Question Here</h3>
+          <div class="user-input">
+            <input id="player-answer" type="text" placeholder="Enter your answer..." >
+          </div>
+          <div class="user-choices">
+            <button id="guess-btn">Guess</button>
+            <button id="pass-btn">Pass</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./scripts/copyrightUpdate.js"></script>
     <!-- Do not change the script source. Allows import/export to work. -->
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/app.js" type="module"></script>
   </body>
 </html>
